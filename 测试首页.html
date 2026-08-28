@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shinuo Supply Chain | DDP Logistics Solutions</title>
+    <!-- 引入 Tailwind CSS 框架 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 平滑滚动与视差背景 */
+        html { scroll-behavior: smooth; }
+        .parallax-bg {
+            background-image: url('首页大图.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+<!-- 顶部吸顶导航栏 (Sticky Navbar) -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-black text-white tracking-wider" id="logo-text">SHINUO SUPPLY CHAIN</span>
+                </div>
+                
+                <!-- 电脑端导航菜单 (大于 900px 时显示，否则隐藏) -->
+                <div class="hidden min-[900px]:flex items-center space-x-7">
+                    <a href="#intro" class="text-white hover:text-blue-400 font-medium transition nav-link" data-i18n="nav_intro">Introduction</a>
+                    <a href="#learn-ddp" class="text-white hover:text-blue-400 font-medium transition nav-link" data-i18n="nav_ddp">Learn about DDP</a>
+                    <a href="#channels" class="text-white hover:text-blue-400 font-medium transition nav-link" data-i18n="nav_channels">Competitive channels</a>
+                    <a href="#contact" class="text-white hover:text-blue-400 font-medium transition nav-link" data-i18n="nav_contact">Contact us</a>
+                    
+                    <!-- Language 切换组件 -->
+                    <div class="flex items-center bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20 text-xs font-semibold text-white">
+                        <button onclick="changeLanguage('en')" id="btn-en-desktop" class="px-2 py-0.5 rounded text-blue-400 font-bold">EN</button>
+                        <span class="text-gray-400">|</span>
+                        <button onclick="changeLanguage('zh')" id="btn-zh-desktop" class="px-2 py-0.5 rounded hover:text-blue-300">中文</button>
+                    </div>
+
+                    <a href="#contact" class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-bold hover:bg-blue-700 shadow-md transition" data-i18n="nav_cta">Request a Quote</a>
+                </div>
+
+                <!-- 手机端汉堡按钮 (小于 900px 时显示) -->
+                <div class="min-[900px]:hidden flex items-center">
+                    <button id="hamburger-btn" class="text-white focus:outline-none hover:text-blue-400 transition">
+                        <!-- 汉堡图标 SVG -->
+                        <svg class="w-8 h-8" fill="none" stroke="Gray" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 手机端侧边滑动菜单 (Mobile Drawer) -->
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-gray-900 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-[60] flex flex-col p-6 min-[900px]:hidden">
+        <!-- 关闭按钮 -->
+        <div class="flex justify-end mb-8">
+            <button id="close-menu-btn" class="text-gray-400 hover:text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="Gray" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- 侧边栏菜单项 -->
+        <div class="flex flex-col space-y-6">
+            <a href="#intro" class="text-white text-lg font-medium hover:text-blue-400 mobile-nav-link" data-i18n="nav_intro">Introduction</a>
+            <a href="#learn-ddp" class="text-white text-lg font-medium hover:text-blue-400 mobile-nav-link" data-i18n="nav_ddp">Learn about DDP</a>
+            <a href="#channels" class="text-white text-lg font-medium hover:text-blue-400 mobile-nav-link" data-i18n="nav_channels">Competitive channels</a>
+            <a href="#contact" class="text-white text-lg font-medium hover:text-blue-400 mobile-nav-link" data-i18n="nav_contact">Contact us</a>
+            
+            <hr class="border-gray-700">
+            
+            <!-- 侧边栏语言切换 -->
+            <div class="flex items-center space-x-2 text-sm font-semibold text-white">
+                <span class="text-gray-400">Lang:</span>
+                <button onclick="changeLanguage('en')" id="btn-en-mobile" class="px-2 py-1 rounded text-blue-400 font-bold bg-gray-800">EN</button>
+                <button onclick="changeLanguage('zh')" id="btn-zh-mobile" class="px-2 py-1 rounded hover:text-blue-300 bg-transparent">中文</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 首屏视差大图区 (Hero Section) -->
+    <header class="relative h-screen flex items-center justify-center parallax-bg overflow-hidden">
+        <div class="absolute inset-0 bg-black/55 z-0"></div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl" id="hero-content">
+            <span class="inline-block bg-blue-600/80 text-blue-100 text-xs md:text-sm font-semibold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase" data-i18n="hero_badge">Global Freight & Dedicated DDP Channels</span>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6 tracking-tight" data-i18n="hero_title">
+                SHINUO: Seamless DDP Supply Chain Solutions<br>
+                <span class="text-blue-400">Zero Clearance Hassles, Guaranteed Landed Cost.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-10" data-i18n="hero_desc">
+                Specialized in heavy commercial commodities, Tri-State warehousing fulfillment, and door-to-door logistics. Transparent pricing with zero surprise charges.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 shadow-xl transition transform hover:-translate-y-0.5" data-i18n="hero_btn_quote">
+                    Get Instant DDP Quote
+                </a>
+                <a href="#learn-ddp" class="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/20 transition" data-i18n="hero_btn_learn">
+                    Explore DDP Benefits
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. 模块：Introduction (公司与业务介绍) -->
+    <section id="intro" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-blue-600 font-semibold tracking-wider uppercase text-sm" data-i18n="intro_subtitle">About Shinuo Supply Chain</h3>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-6" data-i18n="intro_title">Your Trusted Bridge for Trans-Pacific Logistics</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6" data-i18n="intro_p1">
+                        Shinuo Supply Chain specializes in providing high-reliability end-to-end logistics solutions connecting Asian manufacturing hubs with the North American market. We eliminate the traditional friction of international trade by taking full responsibility for ocean transportation, customs compliance, and local last-mile fulfillment.
+                    </p>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-8" data-i18n="intro_p2">
+                        Whether you are looking for pallet-level local pickup in the NY/NJ Tri-State area or full-container door deliveries across the United States, our dedicated customs brokers and dispatch teams ensure optimal cost efficiency and schedule predictability.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 border-t border-gray-100 pt-6">
+                        <div>
+                            <span class="block text-3xl font-extrabold text-blue-900">100%</span>
+                            <span class="text-sm text-gray-500" data-i18n="stat_clearance">Compliant Customs Clearance</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-extrabold text-blue-900">24/7</span>
+                            <span class="text-sm text-gray-500" data-i18n="stat_support">Dedicated Account Management</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-100 p-8 rounded-2xl border border-gray-200 shadow-inner">
+                    <h4 class="text-xl font-bold text-gray-900 mb-4" data-i18n="intro_box_title">Direct Sourcing & High-Value Fulfillment</h4>
+                    <p class="text-gray-600 mb-6" data-i18n="intro_box_desc">
+                        We actively support North American fleet operators, commercial truck service facilities, and wholesale distributors by offering direct factory-level sourcing paired with seamless logistics execution.
+                    </p>
+                    <ul class="space-y-3 text-gray-700 font-medium">
+                        <li class="flex items-center gap-2">
+                            <span class="text-green-500">✓</span> <span data-i18n="intro_feat_1">TBR Commercial Tires (11R22.5, 295/75R22.5 16/18-Ply)</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-green-500">✓</span> <span data-i18n="intro_feat_2">Direct Factory Sourcing & Guaranteed DOT/SmartWay Standards</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-green-500">✓</span> <span data-i18n="intro_feat_3">End-to-End Tracking from Port of Loading to Final Warehouse</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 模块：Learn about DDP (DDP 专栏介绍 - 图文混排版) -->
+    <section id="learn-ddp" class="py-24 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- 采用 Grid 布局：手机端1列，大屏电脑端2列，设置 gap 间距和居中对齐 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                
+                <!-- 左侧：图片展示区 -->
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
+                    <!-- 你可以在 src 里替换为你自己的本地图片，比如 src="warehouse.jpg" -->
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop" 
+                         alt="DDP Logistics Solutions" 
+                         class="w-full h-auto object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105">
+                    <!-- 给图片加个微弱的暗色遮罩，让它看起来更高级 -->
+                    <div class="absolute inset-0 bg-black bg-opacity-10 transition-opacity group-hover:bg-opacity-0"></div>
+                </div>
+
+                <!-- 右侧：文字说明与卡片区 -->
+                <div>
+                    <!-- 核心文案 -->
+                    <div class="mb-10">
+                        <h3 class="text-blue-600 font-semibold tracking-wider uppercase text-sm" data-i18n="ddp_subtitle">Delivered Duty Paid (Incoterms 2020)</h3>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-2" data-i18n="ddp_title">Why Smart Importers Choose DDP</h2>
+                        <p class="mt-4 text-lg text-gray-600 leading-relaxed" data-i18n="ddp_desc">Under DDP terms, the seller assumes 100% of the transportation risks, customs filings, and duties. You pay a single flat price and receive goods directly without administrative burden.</p>
+                    </div>
+
+                    <!-- 垂直排列的 3 个优势说明卡片 -->
+                    <div class="space-y-6">
+                        <!-- 卡片 1 -->
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition flex items-start gap-4">
+                            <div class="w-12 h-12 flex-shrink-0 bg-blue-50 text-blue-600 flex items-center justify-center rounded-lg text-xl font-bold">1</div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-1" data-i18n="ddp_card1_title">All-Inclusive Landed Pricing</h3>
+                                <p class="text-gray-600 text-sm leading-relaxed" data-i18n="ddp_card1_desc">No surprise port demurrage, unexpected tariffs, or hidden brokerage fees. Your landed cost is fixed from day one.</p>
+                            </div>
+                        </div>
+                        <!-- 卡片 2 -->
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition flex items-start gap-4">
+                            <div class="w-12 h-12 flex-shrink-0 bg-blue-50 text-blue-600 flex items-center justify-center rounded-lg text-xl font-bold">2</div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-1" data-i18n="ddp_card2_title">Zero Customs Hassles</h3>
+                                <p class="text-gray-600 text-sm leading-relaxed" data-i18n="ddp_card2_desc">We handle all ISF (10+2) filings, bond assignments, PGA clearances, and customs duty payments seamlessly on your behalf.</p>
+                            </div>
+                        </div>
+                        <!-- 卡片 3 -->
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition flex items-start gap-4">
+                            <div class="w-12 h-12 flex-shrink-0 bg-blue-50 text-blue-600 flex items-center justify-center rounded-lg text-xl font-bold">3</div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-1" data-i18n="ddp_card3_title">Door-to-Door & Will Call</h3>
+                                <p class="text-gray-600 text-sm leading-relaxed" data-i18n="ddp_card3_desc">Choose between localized flatbed deliveries straight to your shop floor or convenient Will Call pickup at regional hub warehouses.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 模块：Competitive channels (优势渠道与网络) -->
+    <section id="channels" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h3 class="text-blue-600 font-semibold tracking-wider uppercase text-sm" data-i18n="channels_subtitle">A few key products where we provide our fastest shipping solutions</h3>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-2" data-i18n="channels_title">Our Dedicated Custom Clearance Channels</h2>
+                <p class="mt-4 text-lg text-gray-600" data-i18n="channels_desc">Reliable port pairings and local fulfillment assets engineered for rapid cargo release.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Channel 1 -->
+                <div class="border border-gray-200 rounded-2xl p-8 hover:border-blue-500 transition shadow-sm">
+                    <span class="inline-block bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded mb-4">U.S. East Coast</span>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2" data-i18n="ch1_title">NY / NJ Tri-State Hub</h3>
+                    <p class="text-gray-600 mb-6 text-sm" data-i18n="ch1_desc">Our trucking service covers all major U.S. ports and most IPI points.</p>
+                    <ul class="text-sm space-y-2 text-gray-700">
+                        <li>• <strong data-i18n="ch1_li1">Fulfillment:</strong> Will Call & Local Trucking</li>
+                        <li>• <strong data-i18n="ch1_li2">Coverage:</strong> NY, NJ, CT, PA</li>
+                    </ul>
+                </div>
+
+                <!-- Channel 2 -->
+                <div class="border border-gray-200 rounded-2xl p-8 hover:border-blue-500 transition shadow-sm">
+                    <span class="inline-block bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded mb-4">U.S. Gulf Coast</span>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2" data-i18n="ch2_title">Houston Direct Channel</h3>
+                    <p class="text-gray-600 mb-6 text-sm" data-i18n="ch2_desc">All-Water direct shipments to Port of Houston. Optimized for heavy freight, industrial machinery, and Southern fleet supplies.</p>
+                    <ul class="text-sm space-y-2 text-gray-700">
+                        <li>• <strong data-i18n="ch2_li1">Specialty:</strong> Heavy Cargo & Permitted Drayage</li>
+                        <li>• <strong data-i18n="ch2_li2">Coverage:</strong> TX, OK, LA & Gulf Region</li>
+                    </ul>
+                </div>
+
+                <!-- Channel 3 -->
+                <div class="border border-gray-200 rounded-2xl p-8 hover:border-blue-500 transition shadow-sm">
+                    <span class="inline-block bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded mb-4">U.S. West Coast</span>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2" data-i18n="ch3_title">LA / LGB Express & IPI</h3>
+                    <p class="text-gray-600 mb-6 text-sm" data-i18n="ch3_desc">Ultra-fast ocean transit to Los Angeles / Long Beach with dedicated MLB rail & truck connections to interior states.</p>
+                    <ul class="text-sm space-y-2 text-gray-700">
+                        <li>• <strong data-i18n="ch3_li1">Transit:</strong> 12-14 Days Ocean Crossing</li>
+                        <li>• <strong data-i18n="ch3_li2">Inland Bridge:</strong> Direct IPI to Midwest/Southwest</li>
+                    </ul>
+                </div>
+
+                <!-- Channel 4 -->
+                <div class="border border-gray-200 rounded-2xl p-8 hover:border-blue-500 transition shadow-sm">
+                    <span class="inline-block bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded mb-4">Golf Cart</span>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2" data-i18n="ch3_title">HUIHIUH</h3>
+                    <p class="text-gray-600 mb-6 text-sm" data-i18n="ch3_desc">Ultra-fast ocean transit to Los Angeles / Long Beach with dedicated MLB rail & truck connections to interior states.</p>
+                    <ul class="text-sm space-y-2 text-gray-700">
+                        <li>• <strong data-i18n="ch3_li1">Transit:</strong> 12-14 Days Ocean Crossing</li>
+                        <li>• <strong data-i18n="ch3_li2">Inland Bridge:</strong> Direct IPI to Midwest/Southwest</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 模块：Contact us (信息收集表单与联系方式) -->
+    <section id="contact" class="py-24 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- 左侧联系信息 -->
+                <div class="lg:col-span-5 space-y-6">
+                    <h3 class="text-blue-400 font-semibold tracking-wider uppercase text-sm" data-i18n="contact_subtitle">Get In Touch</h3>
+                    <h2 class="text-3xl md:text-4xl font-extrabold" data-i18n="contact_title">Request a Formal DDP Quotation</h2>
+                    <p class="text-gray-300 leading-relaxed" data-i18n="contact_desc">
+                        Fill out the inquiry form and our logistics team will contact you within 24 business hours.
+                    </p>
+                    
+                    <div class="space-y-4 pt-4 border-t border-gray-800 text-gray-300 text-sm">
+                        <p><strong class="text-white" data-i18n="contact_hq">Headquarters:</strong> 1839 Qixin Rd, Shanghai, China</p>
+                        <p><strong class="text-white" data-i18n="contact_tel">Tel.: </strong> (+33)630283964</p>
+                        <p><strong class="text-white" data-i18n="contact_email">Business Email:</strong> alexq@shinuo.net</p>
+                    </div>
+                </div>
+
+                <!-- 右侧线索表单 -->
+                <div class="lg:col-span-7 bg-white text-gray-900 rounded-2xl p-8 sm:p-10 shadow-2xl">
+                    <form action="https://formsubmit.co/alexq@shinuo.net" method="POST" class="space-y-6">
+                        <input type="hidden" name="_subject" value="New DDP Inquiry from Shinuo Website!">
+                        <input type="hidden" name="_captcha" value="false">
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="form_email">Email / Contact Person *</label>
+                                <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="purchasing@company.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="form_service">Service Type</label>
+                                <select name="Service Type" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+                                    <option>DDP (Door-to-Door Delivery)</option>
+                                    <option>DDP Will Call (Warehouse Pickup)</option>
+                                    <option>Port to Door Logistics</option>
+                                    <option>Factory Sourcing + DDP Bundle</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="form_zip">Delivery ZIP Code / City *</label>
+                                <input type="text" name="Delivery Location" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="e.g. NJ 08852 or Houston TX">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="form_cargo">Commodity / Volume Details *</label>
+                                <input type="text" name="Cargo Details" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="e.g. 1*40HQ truck tires">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="form_notes">Additional Requirements</label>
+                            <textarea name="Notes" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Let us know your preferred timeline, warehouse preferences, or sourcing requirements..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition shadow-lg text-base" data-i18n="form_btn">
+                            Submit Inquiry
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-950 py-8 border-t border-gray-800 text-center">
+        <p class="text-gray-500 text-sm">© 2026 Shinuo Supply Chain. All rights reserved. | Trans-Pacific DDP Solutions</p>
+    </footer>
+
+    <!-- 交互与多语言切换 JS 脚本 -->
+    <script>
+        // 1. 中英文翻译词条字典（你可以在这里随时校对和修改中文）
+        const translations = {
+            en: {
+                nav_intro: "Introduction",
+                nav_ddp: "Learn about DDP",
+                nav_channels: "Competitive channels",
+                nav_contact: "Contact us",
+                nav_cta: "Request a Quote",
+                hero_badge: "Global Freight & Dedicated DDP Channels",
+                hero_title: "Seamless DDP Supply Chain Solutions:<br><span class='text-blue-400'>Zero Clearance Hassles, Guaranteed Landed Cost.</span>",
+                hero_desc: "Specialized in heavy commercial commodities, Tri-State warehousing fulfillment, and door-to-door logistics. Transparent pricing with zero surprise charges.",
+                hero_btn_quote: "Get Instant DDP Quote",
+                hero_btn_learn: "Explore DDP Benefits",
+                intro_subtitle: "About Shinuo Supply Chain",
+                intro_title: "Your Trusted Bridge for Trans-Pacific Logistics",
+                intro_p1: "Shinuo Supply Chain specializes in providing high-reliability end-to-end logistics solutions connecting Asian manufacturing hubs with the North American market. We eliminate the traditional friction of international trade by taking full responsibility for ocean transportation, customs compliance, and local last-mile fulfillment.",
+                intro_p2: "Whether you are looking for pallet-level local pickup in the NY/NJ Tri-State area or full-container door deliveries across the United States, our dedicated customs brokers and dispatch teams ensure optimal cost efficiency and schedule predictability.",
+                stat_clearance: "Compliant Customs Clearance",
+                stat_support: "Dedicated Account Management",
+                intro_box_title: "Direct Sourcing & High-Value Fulfillment",
+                intro_box_desc: "We actively support North American fleet operators, commercial truck service facilities, and wholesale distributors by offering direct factory-level sourcing paired with seamless logistics execution.",
+                intro_feat_1: "TBR Commercial Tires (11R22.5, 295/75R22.5 16/18-Ply)",
+                intro_feat_2: "Direct Factory Sourcing & Guaranteed DOT/SmartWay Standards",
+                intro_feat_3: "End-to-End Tracking from Port of Loading to Final Warehouse",
+                ddp_subtitle: "Delivered Duty Paid (Incoterms 2020)",
+                ddp_title: "Why Smart Importers Choose DDP",
+                ddp_desc: "Under DDP terms, the seller assumes 100% of the transportation risks, customs filings, and duties. You pay a single flat price and receive goods directly without administrative burden.",
+                ddp_card1_title: "All-Inclusive Landed Pricing",
+                ddp_card1_desc: "No surprise port demurrage, unexpected tariffs, or hidden brokerage fees. Your landed cost is fixed from day one.",
+                ddp_card2_title: "Zero Customs Hassles",
+                ddp_card2_desc: "We handle all ISF (10+2) filings, bond assignments, PGA clearances, and customs duty payments seamlessly on your behalf.",
+                ddp_card3_title: "Door-to-Door & Will Call",
+                ddp_card3_desc: "Choose between localized flatbed deliveries straight to your shop floor or convenient Will Call pickup at regional hub warehouses.",
+                channels_subtitle: "Core Logistics Routes & Facilities",
+                channels_title: "Our Dedicated Strategic Channels",
+                channels_desc: "Reliable port pairings and local fulfillment assets engineered for rapid cargo release.",
+                ch1_title: "NY / NJ Tri-State Hub",
+                ch1_desc: "Direct express ocean routing into Port of New York & New Jersey. Dedicated bonded warehousing and quick Will Call turnaround.",
+                ch1_li1: "Fulfillment:",
+                ch1_li2: "Coverage:",
+                ch2_title: "Houston Direct Channel",
+                ch2_desc: "All-Water direct shipments to Port of Houston. Optimized for heavy freight, industrial machinery, and Southern fleet supplies.",
+                ch2_li1: "Specialty:",
+                ch2_li2: "Coverage:",
+                ch3_title: "LA / LGB Express & IPI",
+                ch3_desc: "Ultra-fast ocean transit to Los Angeles / Long Beach with dedicated MLB rail & truck connections to interior states.",
+                ch3_li1: "Transit:",
+                ch3_li2: "Inland Bridge:",
+                contact_subtitle: "Get In Touch",
+                contact_title: "Request a Formal DDP Quotation",
+                contact_desc: "Fill out the inquiry form and our logistics team will calculate your guaranteed landed cost within 24 business hours.",
+                contact_hq: "Headquarters:",
+                contact_tel: "Tel.:",
+                contact_email: "Business Email:",
+                form_email: "Email / Contact Person *",
+                form_service: "Service Type",
+                form_zip: "Delivery ZIP Code / City *",
+                form_cargo: "Commodity / Volume Details *",
+                form_notes: "Additional Requirements",
+                form_btn: "Submit Inquiry"
+            },
+            zh: {
+                nav_intro: "公司简介",
+                nav_ddp: "了解 DDP 服务",
+                nav_channels: "核心优势渠道",
+                nav_contact: "联系我们",
+                nav_cta: "获取报价单",
+                hero_badge: "全球海运与专属 DDP 双清专线",
+                hero_title: "一站式 DDP 跨境供应链方案：<br><span class='text-blue-400'>零清关烦恼，锁定最终到岸价。</span>",
+                hero_desc: "专注重型商用物资、美东三州本地海外仓履约与全美门到门干线运输。透明一口价，无隐形杂费。",
+                hero_btn_quote: "获取即时 DDP 报价",
+                hero_btn_learn: "了解 DDP 优势",
+                intro_subtitle: "关于世诺供应链",
+                intro_title: "连接跨太平洋贸易的可靠桥梁",
+                intro_p1: "世诺供应链（Shinuo Supply Chain）致力于为亚洲制造基地与北美市场之间提供高稳定性的端到端物流解决方案。我们全权负责远洋海运、海关合规申报及美国本土末端履约，彻底消除跨国贸易中的繁琐壁垒。",
+                intro_p2: "无论您需要纽约/新泽西（三州地区）的托盘级本地仓库自提，还是全美各地的整柜门到门派送，我们专业的报关专员与车队调度都能保障最佳的成本效益与时效确定性。",
+                stat_clearance: "合规海关清关保障",
+                stat_support: "专属客户经理 1对1 响应",
+                intro_box_title: "源头直供与高附加值履约",
+                intro_box_desc: "我们通过提供源头工厂级直供货源与无缝物流对接，深度赋能北美商业车队、卡车维修厂及区域批发分销商。",
+                intro_feat_1: "全钢商用卡客车轮胎 (11R22.5, 295/75R22.5 16/18层级)",
+                intro_feat_2: "工厂直接货源，严格保障 DOT / SmartWay 认证标准",
+                intro_feat_3: "从起运港装船到最终仓库放货的全流程节点跟踪",
+                ddp_subtitle: "完税后交货 (Incoterms 2020)",
+                ddp_title: "为什么成熟进口商更青睐 DDP？",
+                ddp_desc: "在 DDP 条款下，发货方承担 100% 的运输风险、清关申报与关税税款。买家只需支付透明的固定到岸价，无需承担任何通关与行政风险即可坐等收货。",
+                ddp_card1_title: "全包到岸一口价",
+                ddp_card1_desc: "告别意外的港口滞期费（Demurrage）、不可控的突发关税与中间商杂费。从第一天起锁死采购到岸总成本。",
+                ddp_card2_title: "免除海关一切繁琐手续",
+                ddp_card2_desc: "我们后端全包 ISF (10+2) 申报、Bond 绑定、政府联合监管审查（PGA）及全部税费代缴，买方零申报负担。",
+                ddp_card3_title: "门到门配送与自提灵活选择",
+                ddp_card3_desc: "支持卡车平板直接派送到您的修车厂或厂房，也可灵活选择在美东/美湾核心海外仓进行便捷的 Will Call 本地自提。",
+                channels_subtitle: "核心航线与海外仓网络",
+                channels_title: "世诺专属战略优势渠道",
+                channels_desc: "依托成熟的港口快线配置与本土履约资产，实现货物的极速清关与放行。",
+                ch1_title: "纽约 / 新泽西 三州枢纽",
+                ch1_desc: "直航纽约/新泽西港（Port of NY/NJ）。配备专属保税海外仓，支持快速 Will Call 自提与周边州短途配送。",
+                ch1_li1: "履约模式：",
+                ch1_li2: "覆盖范围：",
+                ch2_title: "休斯顿 美湾直达通道",
+                ch2_desc: "全水路（All-Water）直达休斯顿港。专为重柜、工业机械及美国南部商业车队备件量身打造。",
+                ch2_li1: "特色优势：",
+                ch2_li2: "覆盖范围：",
+                ch3_title: "美西洛杉矶 (LA/LGB) 极速中转",
+                ch3_desc: "12-14 天直达洛杉矶/长滩港，配套专属海铁联运（MLB/IPI）直插美国内陆腹地各核心铁路堆场。",
+                ch3_li1: "纯海运时效：",
+                ch3_li2: "陆桥转运：",
+                contact_subtitle: "业务垂询",
+                contact_title: "获取正式 DDP 报价单",
+                contact_desc: "请填写以下询盘信息，我们的关务与物流团队将在 24 小时内与您取得联系。",
+                contact_hq: "总部地址：",
+                contact_tel: "联系电话：",
+                contact_email: "商务邮箱：",
+                form_email: "联系邮箱 / 采购负责人 *",
+                form_service: "服务模式",
+                form_zip: "目的港邮编 / 派送城市 *",
+                form_cargo: "货物名称 / 规格与货量 *",
+                form_notes: "补充要求 / 偏好",
+                form_btn: "提交询盘信息"
+            }
+        };
+
+        // 切换语言函数
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // 切换按钮高亮样式
+            const btnEn = document.getElementById('btn-en-desktop');
+            const btnZh = document.getElementById('btn-zh-desktop');
+            if (lang === 'zh') {
+                btnZh.className = "px-2 py-0.5 rounded text-blue-400 font-bold";
+                btnEn.className = "px-2 py-0.5 rounded hover:text-blue-300 font-normal text-white";
+            } else {
+                btnEn.className = "px-2 py-0.5 rounded text-blue-400 font-bold";
+                btnZh.className = "px-2 py-0.5 rounded hover:text-blue-300 font-normal text-white";
+            }
+        }
+
+        // 2. 页面滚动微交互（Navbar 吸顶变色 + 首屏视差淡出）
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const logoText = document.getElementById('logo-text');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const heroContent = document.getElementById('hero-content');
+            
+            let scrollPosition = window.scrollY;
+
+            // Navbar 吸顶变色
+            if (scrollPosition > 50) {
+                navbar.classList.add('bg-white', 'shadow-md');
+                logoText.classList.replace('text-white', 'text-blue-900');
+                navLinks.forEach(link => {
+                    link.classList.replace('text-white', 'text-gray-700');
+                });
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md');
+                logoText.classList.replace('text-blue-900', 'text-white');
+                navLinks.forEach(link => {
+                    link.classList.replace('text-gray-700', 'text-white');
+                });
+            }
+
+            // 首屏文字淡出
+            let opacity = 1 - (scrollPosition / 550);
+            if (opacity >= 0) {
+                heroContent.style.opacity = opacity;
+                heroContent.style.transform = `translateY(${scrollPosition * 0.25}px)`;
+            }
+        // 3. 手机端汉堡菜单滑动逻辑
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        // 切换侧滑菜单状态
+        function toggleMobileMenu() {
+            // translate-x-full 表示完全移出屏幕，移除该类名即可滑入
+            mobileMenu.classList.toggle('translate-x-full');
+        }
+
+        // 绑定点击事件
+        hamburgerBtn.addEventListener('click', toggleMobileMenu);
+        closeMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // 点击侧边栏的任何一个链接后，自动收起菜单
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+
+        // 4. 同步更新桌面端和移动端的语言按钮高亮状态
+        // 注意：原 changeLanguage 函数需要稍微修改以同时控制两组按钮
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // 获取所有按钮
+            const btnEnDesktop = document.getElementById('btn-en-desktop');
+            const btnZhDesktop = document.getElementById('btn-zh-desktop');
+            const btnEnMobile = document.getElementById('btn-en-mobile');
+            const btnZhMobile = document.getElementById('btn-zh-mobile');
+
+            if (lang === 'zh') {
+                btnZhDesktop.className = "px-2 py-0.5 rounded text-blue-400 font-bold";
+                btnEnDesktop.className = "px-2 py-0.5 rounded hover:text-blue-300 font-normal text-white";
+                btnZhMobile.className = "px-2 py-1 rounded text-blue-400 font-bold bg-gray-800";
+                btnEnMobile.className = "px-2 py-1 rounded hover:text-blue-300 bg-transparent text-white";
+            } else {
+                btnEnDesktop.className = "px-2 py-0.5 rounded text-blue-400 font-bold";
+                btnZhDesktop.className = "px-2 py-0.5 rounded hover:text-blue-300 font-normal text-white";
+                btnEnMobile.className = "px-2 py-1 rounded text-blue-400 font-bold bg-gray-800";
+                btnZhMobile.className = "px-2 py-1 rounded hover:text-blue-300 bg-transparent text-white";
+            }
+        }
+        });
+    </script>
+</body>
+</html>
