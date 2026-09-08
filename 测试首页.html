@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shinuo Supply Chain | DDP Logistics Solutions</title>
-    <!-- 引入 Tailwind CSS 框架 -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 使用本地构建的 Tailwind CSS -->
+    <link rel="stylesheet" href="dist/tailwind.css">
     <style>
         /* 平滑滚动与视差背景 */
         html { scroll-behavior: smooth; }
@@ -94,7 +94,7 @@
         <div class="relative z-10 text-center px-4 max-w-4xl" id="hero-content">
             <span class="inline-block bg-blue-600/80 text-blue-100 text-xs md:text-sm font-semibold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase" data-i18n="hero_badge">Global Freight & Dedicated DDP Channels</span>
             <h1 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6 tracking-tight" data-i18n="hero_title">
-                SHINUO: Seamless DDP Supply Chain Solutions<br>
+                SHINUO: Point-to-point DDP Supply Chain Solutions<br>
                 <span class="text-blue-400">Zero Clearance Hassles, Guaranteed Landed Cost.</span>
             </h1>
             <p class="text-lg md:text-xl text-gray-200 mb-10" data-i18n="hero_desc">
@@ -126,8 +126,8 @@
                     </p>
                     <div class="grid grid-cols-2 gap-6 border-t border-gray-100 pt-6">
                         <div>
-                            <span class="block text-3xl font-extrabold text-blue-900">100%</span>
-                            <span class="text-sm text-gray-500" data-i18n="stat_clearance">Compliant Customs Clearance</span>
+                            <span class="block text-3xl font-extrabold text-blue-900">>98%</span>
+                            <span class="text-sm text-gray-500" data-i18n="stat_clearance">Green lane release rates</span>
                         </div>
                         <div>
                             <span class="block text-3xl font-extrabold text-blue-900">24/7</span>
@@ -138,17 +138,17 @@
                 <div class="bg-gray-100 p-8 rounded-2xl border border-gray-200 shadow-inner">
                     <h4 class="text-xl font-bold text-gray-900 mb-4" data-i18n="intro_box_title">Direct Sourcing & High-Value Fulfillment</h4>
                     <p class="text-gray-600 mb-6" data-i18n="intro_box_desc">
-                        We actively support North American fleet operators, commercial truck service facilities, and wholesale distributors by offering direct factory-level sourcing paired with seamless logistics execution.
+                        We actively support North American fleet operators and wholesale distributors by offering direct factory-level sourcing paired with seamless logistics execution.
                     </p>
                     <ul class="space-y-3 text-gray-700 font-medium">
                         <li class="flex items-center gap-2">
-                            <span class="text-green-500">✓</span> <span data-i18n="intro_feat_1">TBR Commercial Tires (11R22.5, 295/75R22.5 16/18-Ply)</span>
+                            <span class="text-green-500">🛞</span> <span data-i18n="intro_feat_1">DOT guaranteed TBR Commercial Tires (11R22.5, 295/75R22.5 18-Ply)</span>
                         </li>
                         <li class="flex items-center gap-2">
-                            <span class="text-green-500">✓</span> <span data-i18n="intro_feat_2">Direct Factory Sourcing & Guaranteed DOT/SmartWay Standards</span>
+                            <span class="text-green-500">🚗</span> <span data-i18n="intro_feat_2">Direct Factory Sourcing Auto Parts</span>
                         </li>
                         <li class="flex items-center gap-2">
-                            <span class="text-green-500">✓</span> <span data-i18n="intro_feat_3">End-to-End Tracking from Port of Loading to Final Warehouse</span>
+                            <span class="text-green-500">☑️</span> <span data-i18n="intro_feat_3">All offered with End-to-End Tracking from Port of Loading to Final Warehouse</span>
                         </li>
                     </ul>
                 </div>
@@ -165,11 +165,11 @@
                 <!-- 左侧：图片展示区 -->
                 <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
                     <!-- 你可以在 src 里替换为你自己的本地图片，比如 src="warehouse.jpg" -->
-                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop" 
+                    <img src="warehousephoto.jpg" 
                          alt="DDP Logistics Solutions" 
                          class="w-full h-auto object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105">
                     <!-- 给图片加个微弱的暗色遮罩，让它看起来更高级 -->
-                    <div class="absolute inset-0 bg-black bg-opacity-10 transition-opacity group-hover:bg-opacity-0"></div>
+                    <div class="absolute inset-0 bg-black/10 transition-opacity group-hover:bg-black/0"></div>
                 </div>
 
                 <!-- 右侧：文字说明与卡片区 -->
@@ -223,49 +223,53 @@
                 <p class="mt-4 text-lg text-gray-600" data-i18n="channels_desc">Reliable port pairings and local fulfillment assets engineered for rapid cargo release.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- Channel 1 -->
-                <div class="border border-gray-200 rounded-2xl p-8 hover:border-blue-500 transition shadow-sm">
-                    <span class="inline-block bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded mb-4">U.S. East Coast</span>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2" data-i18n="ch1_title">NY / NJ Tri-State Hub</h3>
-                    <p class="text-gray-600 mb-6 text-sm" data-i18n="ch1_desc">Our trucking service covers all major U.S. ports and most IPI points.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:items-stretch">
+                <!-- Channel A -->
+                <div class="border border-gray-200 rounded-2xl p-8 hover:border-blue-500 transition shadow-sm flex flex-col">
+                    <span class="inline-block bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded mb-4" data-i18n="ch4_badge">Our core strength (500+ TEU per Month):</span>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2" data-i18n="ch4_title">High-Tariff Commodities</h3>
+                    <p class="text-gray-600 mb-6 text-sm" data-i18n="ch4_desc">We cooperate with various brokers and booking agents to provide competitive pricing for a wide range of products.</p>
+                    <div class="mb-6 flex-1 min-h-56 lg:min-h-0 overflow-hidden rounded-xl shadow-sm">
+                        <img src="Competitive good.jpg" alt="Competitive goods" class="h-full w-full object-cover transition duration-500 ease-out hover:scale-105 hover:shadow-lg">
+                    </div>
                     <ul class="text-sm space-y-2 text-gray-700">
-                        <li>• <strong data-i18n="ch1_li1">Fulfillment:</strong> Will Call & Local Trucking</li>
-                        <li>• <strong data-i18n="ch1_li2">Coverage:</strong> NY, NJ, CT, PA</li>
+                        <li>• <strong data-i18n="ch4_li1">Our tailored strategies:</strong> <span data-i18n="ch4_li1_desc">We implement an integration of export clearance, ocean freight, localized customs compliance. Customers enjoy a transparent landed cost with zero administrative or tariff hassles for the buyer.</span></li>
                     </ul>
                 </div>
 
-                <!-- Channel 2 -->
-                <div class="border border-gray-200 rounded-2xl p-8 hover:border-blue-500 transition shadow-sm">
-                    <span class="inline-block bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded mb-4">U.S. Gulf Coast</span>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2" data-i18n="ch2_title">Houston Direct Channel</h3>
-                    <p class="text-gray-600 mb-6 text-sm" data-i18n="ch2_desc">All-Water direct shipments to Port of Houston. Optimized for heavy freight, industrial machinery, and Southern fleet supplies.</p>
-                    <ul class="text-sm space-y-2 text-gray-700">
-                        <li>• <strong data-i18n="ch2_li1">Specialty:</strong> Heavy Cargo & Permitted Drayage</li>
-                        <li>• <strong data-i18n="ch2_li2">Coverage:</strong> TX, OK, LA & Gulf Region</li>
-                    </ul>
-                </div>
+                <div class="grid grid-rows-3 gap-8">
+                    <!-- Channel 1 -->
+                    <div class="border border-gray-200 rounded-2xl p-8 hover:border-blue-500 transition shadow-sm">
+                        <span class="inline-block bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded mb-4" data-i18n="ch1_region">U.S. East Coast</span>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2" data-i18n="ch1_title">NY / NJ Tri-State Hub</h3>
+                        <p class="text-gray-600 mb-6 text-sm" data-i18n="ch1_desc">Our trucking service covers all major U.S. ports and most IPI points.</p>
+                        <ul class="text-sm space-y-2 text-gray-700">
+                            <li>• <strong data-i18n="ch1_li1">Fulfillment:</strong> <span data-i18n="ch1_li1_desc">Will Call & Local Trucking</span></li>
+                            <li>• <strong data-i18n="ch1_li2">Coverage:</strong> <span data-i18n="ch1_li2_desc">NY, NJ, CT, PA</span></li>
+                        </ul>
+                    </div>
 
-                <!-- Channel 3 -->
-                <div class="border border-gray-200 rounded-2xl p-8 hover:border-blue-500 transition shadow-sm">
-                    <span class="inline-block bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded mb-4">U.S. West Coast</span>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2" data-i18n="ch3_title">LA / LGB Express & IPI</h3>
-                    <p class="text-gray-600 mb-6 text-sm" data-i18n="ch3_desc">Ultra-fast ocean transit to Los Angeles / Long Beach with dedicated MLB rail & truck connections to interior states.</p>
-                    <ul class="text-sm space-y-2 text-gray-700">
-                        <li>• <strong data-i18n="ch3_li1">Transit:</strong> 12-14 Days Ocean Crossing</li>
-                        <li>• <strong data-i18n="ch3_li2">Inland Bridge:</strong> Direct IPI to Midwest/Southwest</li>
-                    </ul>
-                </div>
+                    <!-- Channel 2 -->
+                    <div class="border border-gray-200 rounded-2xl p-8 hover:border-blue-500 transition shadow-sm">
+                        <span class="inline-block bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded mb-4" data-i18n="ch2_region">U.S. Gulf Coast</span>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2" data-i18n="ch2_title">Houston Direct Channel</h3>
+                        <p class="text-gray-600 mb-6 text-sm" data-i18n="ch2_desc">All-Water direct shipments to Port of Houston. Optimized for heavy freight, industrial machinery, and Southern fleet supplies.</p>
+                        <ul class="text-sm space-y-2 text-gray-700">
+                            <li>• <strong data-i18n="ch2_li1">Specialty:</strong> <span data-i18n="ch2_li1_desc">Heavy Cargo & Permitted Drayage</span></li>
+                            <li>• <strong data-i18n="ch2_li2">Coverage:</strong> <span data-i18n="ch2_li2_desc">TX, OK, LA & Gulf Region</span></li>
+                        </ul>
+                    </div>
 
-                <!-- Channel 4 -->
-                <div class="border border-gray-200 rounded-2xl p-8 hover:border-blue-500 transition shadow-sm">
-                    <span class="inline-block bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded mb-4">Golf Cart</span>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2" data-i18n="ch3_title">HUIHIUH</h3>
-                    <p class="text-gray-600 mb-6 text-sm" data-i18n="ch3_desc">Ultra-fast ocean transit to Los Angeles / Long Beach with dedicated MLB rail & truck connections to interior states.</p>
-                    <ul class="text-sm space-y-2 text-gray-700">
-                        <li>• <strong data-i18n="ch3_li1">Transit:</strong> 12-14 Days Ocean Crossing</li>
-                        <li>• <strong data-i18n="ch3_li2">Inland Bridge:</strong> Direct IPI to Midwest/Southwest</li>
-                    </ul>
+                    <!-- Channel 3 -->
+                    <div class="border border-gray-200 rounded-2xl p-8 hover:border-blue-500 transition shadow-sm">
+                        <span class="inline-block bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded mb-4" data-i18n="ch3_region">U.S. West Coast</span>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2" data-i18n="ch3_title">LA / LGB Express & IPI</h3>
+                        <p class="text-gray-600 mb-6 text-sm" data-i18n="ch3_desc">Ultra-fast ocean transit to Los Angeles / Long Beach with dedicated MLB rail & truck connections to interior states.</p>
+                        <ul class="text-sm space-y-2 text-gray-700">
+                            <li>• <strong data-i18n="ch3_li1">Transit:</strong> <span data-i18n="ch3_li1_desc">12-14 Days Ocean Crossing</span></li>
+                            <li>• <strong data-i18n="ch3_li2">Inland Bridge:</strong> <span data-i18n="ch3_li2_desc">Direct IPI to Midwest/Southwest</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -294,7 +298,7 @@
                 <!-- 右侧线索表单 -->
                 <div class="lg:col-span-7 bg-white text-gray-900 rounded-2xl p-8 sm:p-10 shadow-2xl">
                     <form action="https://formsubmit.co/alexq@shinuo.net" method="POST" class="space-y-6">
-                        <input type="hidden" name="_subject" value="New DDP Inquiry from Shinuo Website!">
+                        <input type="hidden" name="_subject" value="New Inquiry from SN Website!">
                         <input type="hidden" name="_captcha" value="false">
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -326,7 +330,7 @@
 
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="form_notes">Additional Requirements</label>
-                            <textarea name="Notes" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Let us know your preferred timeline, warehouse preferences, or sourcing requirements..."></textarea>
+                            <textarea name="Notes" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Let us know your warehouse preferences, sourcing requirements, or your preferred method of contact..."></textarea>
                         </div>
 
                         <button type="submit" class="w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition shadow-lg text-base" data-i18n="form_btn">
@@ -355,7 +359,7 @@
                 nav_contact: "Contact us",
                 nav_cta: "Request a Quote",
                 hero_badge: "Global Freight & Dedicated DDP Channels",
-                hero_title: "Seamless DDP Supply Chain Solutions:<br><span class='text-blue-400'>Zero Clearance Hassles, Guaranteed Landed Cost.</span>",
+                hero_title: "SHINUO: Point-to-point DDP Supply Chain Solutions<br><span class='text-blue-400'>Zero Clearance Hassles, Guaranteed Landed Cost.</span>",
                 hero_desc: "Specialized in heavy commercial commodities, Tri-State warehousing fulfillment, and door-to-door logistics. Transparent pricing with zero surprise charges.",
                 hero_btn_quote: "Get Instant DDP Quote",
                 hero_btn_learn: "Explore DDP Benefits",
@@ -363,13 +367,13 @@
                 intro_title: "Your Trusted Bridge for Trans-Pacific Logistics",
                 intro_p1: "Shinuo Supply Chain specializes in providing high-reliability end-to-end logistics solutions connecting Asian manufacturing hubs with the North American market. We eliminate the traditional friction of international trade by taking full responsibility for ocean transportation, customs compliance, and local last-mile fulfillment.",
                 intro_p2: "Whether you are looking for pallet-level local pickup in the NY/NJ Tri-State area or full-container door deliveries across the United States, our dedicated customs brokers and dispatch teams ensure optimal cost efficiency and schedule predictability.",
-                stat_clearance: "Compliant Customs Clearance",
+                stat_clearance: "Green lane release rates",
                 stat_support: "Dedicated Account Management",
                 intro_box_title: "Direct Sourcing & High-Value Fulfillment",
-                intro_box_desc: "We actively support North American fleet operators, commercial truck service facilities, and wholesale distributors by offering direct factory-level sourcing paired with seamless logistics execution.",
-                intro_feat_1: "TBR Commercial Tires (11R22.5, 295/75R22.5 16/18-Ply)",
-                intro_feat_2: "Direct Factory Sourcing & Guaranteed DOT/SmartWay Standards",
-                intro_feat_3: "End-to-End Tracking from Port of Loading to Final Warehouse",
+                intro_box_desc: "We actively support North American fleet operators and wholesale distributors by offering direct factory-level sourcing paired with seamless logistics execution.",
+                intro_feat_1: "DOT guaranteed TBR Commercial Tires (11R22.5, 295/75R22.5 18-Ply)",
+                intro_feat_2: "Direct Factory Sourcing Auto Parts",
+                intro_feat_3: "All offered with End-to-End Tracking from Port of Loading to Final Warehouse",
                 ddp_subtitle: "Delivered Duty Paid (Incoterms 2020)",
                 ddp_title: "Why Smart Importers Choose DDP",
                 ddp_desc: "Under DDP terms, the seller assumes 100% of the transportation risks, customs filings, and duties. You pay a single flat price and receive goods directly without administrative burden.",
@@ -379,24 +383,38 @@
                 ddp_card2_desc: "We handle all ISF (10+2) filings, bond assignments, PGA clearances, and customs duty payments seamlessly on your behalf.",
                 ddp_card3_title: "Door-to-Door & Will Call",
                 ddp_card3_desc: "Choose between localized flatbed deliveries straight to your shop floor or convenient Will Call pickup at regional hub warehouses.",
-                channels_subtitle: "Core Logistics Routes & Facilities",
-                channels_title: "Our Dedicated Strategic Channels",
+                channels_subtitle: "A few key products where we provide our fastest shipping solutions",
+                channels_title: "Our Dedicated Custom Clearance Channels",
                 channels_desc: "Reliable port pairings and local fulfillment assets engineered for rapid cargo release.",
+                ch4_badge: "Our core strength (500+ TEU per Month):",
                 ch1_title: "NY / NJ Tri-State Hub",
-                ch1_desc: "Direct express ocean routing into Port of New York & New Jersey. Dedicated bonded warehousing and quick Will Call turnaround.",
+                ch1_desc: "Our trucking service covers all major U.S. ports and most IPI points.",
+                ch1_region: "U.S. East Coast",
                 ch1_li1: "Fulfillment:",
+                ch1_li1_desc: "Will Call & Local Trucking",
                 ch1_li2: "Coverage:",
+                ch1_li2_desc: "NY, NJ, CT, PA",
                 ch2_title: "Houston Direct Channel",
                 ch2_desc: "All-Water direct shipments to Port of Houston. Optimized for heavy freight, industrial machinery, and Southern fleet supplies.",
+                ch2_region: "U.S. Gulf Coast",
                 ch2_li1: "Specialty:",
+                ch2_li1_desc: "Heavy Cargo & Permitted Drayage",
                 ch2_li2: "Coverage:",
+                ch2_li2_desc: "TX, OK, LA & Gulf Region",
                 ch3_title: "LA / LGB Express & IPI",
                 ch3_desc: "Ultra-fast ocean transit to Los Angeles / Long Beach with dedicated MLB rail & truck connections to interior states.",
+                ch3_region: "U.S. West Coast",
                 ch3_li1: "Transit:",
+                ch3_li1_desc: "12-14 Days Ocean Crossing",
                 ch3_li2: "Inland Bridge:",
+                ch3_li2_desc: "Direct IPI to Midwest/Southwest",
+                ch4_title: "High-Tariff Commodities",
+                ch4_desc: "We cooperate with various brokers and booking agents to provide competitive pricing for a wide range of products.",
+                ch4_li1: "Our tailored strategies:",
+                ch4_li1_desc: "We implement an integration of export clearance, ocean freight, localized customs compliance. Customers enjoy a transparent landed cost with zero administrative or tariff hassles for the buyer.",
                 contact_subtitle: "Get In Touch",
                 contact_title: "Request a Formal DDP Quotation",
-                contact_desc: "Fill out the inquiry form and our logistics team will calculate your guaranteed landed cost within 24 business hours.",
+                contact_desc: "Fill out the inquiry form and our logistics team will contact you within 24 business hours.",
                 contact_hq: "Headquarters:",
                 contact_tel: "Tel.:",
                 contact_email: "Business Email:",
@@ -414,7 +432,7 @@
                 nav_contact: "联系我们",
                 nav_cta: "获取报价单",
                 hero_badge: "全球海运与专属 DDP 双清专线",
-                hero_title: "一站式 DDP 跨境供应链方案：<br><span class='text-blue-400'>零清关烦恼，锁定最终到岸价。</span>",
+                hero_title: "SHINUO：点到点 DDP 供应链解决方案<br><span class='text-blue-400'>零清关烦恼，锁定最终到岸价。</span>",
                 hero_desc: "专注重型商用物资、美东三州本地海外仓履约与全美门到门干线运输。透明一口价，无隐形杂费。",
                 hero_btn_quote: "获取即时 DDP 报价",
                 hero_btn_learn: "了解 DDP 优势",
@@ -425,10 +443,10 @@
                 stat_clearance: "合规海关清关保障",
                 stat_support: "专属客户经理 1对1 响应",
                 intro_box_title: "源头直供与高附加值履约",
-                intro_box_desc: "我们通过提供源头工厂级直供货源与无缝物流对接，深度赋能北美商业车队、卡车维修厂及区域批发分销商。",
-                intro_feat_1: "全钢商用卡客车轮胎 (11R22.5, 295/75R22.5 16/18层级)",
-                intro_feat_2: "工厂直接货源，严格保障 DOT / SmartWay 认证标准",
-                intro_feat_3: "从起运港装船到最终仓库放货的全流程节点跟踪",
+                intro_box_desc: "我们通过提供源头工厂级直供服务与无缝物流执行，积极服务于北美商业车队运营商和批发分销商。",
+                intro_feat_1: "DOT 认证保障的全钢商用轮胎 (11R22.5, 295/75R22.5 18 层级)",
+                intro_feat_2: "工厂直接采购汽车零部件",
+                intro_feat_3: "所有产品均提供从起运港到最终仓库的端到端跟踪服务",
                 ddp_subtitle: "完税后交货 (Incoterms 2020)",
                 ddp_title: "为什么成熟进口商更青睐 DDP？",
                 ddp_desc: "在 DDP 条款下，发货方承担 100% 的运输风险、清关申报与关税税款。买家只需支付透明的固定到岸价，无需承担任何通关与行政风险即可坐等收货。",
@@ -438,24 +456,38 @@
                 ddp_card2_desc: "我们后端全包 ISF (10+2) 申报、Bond 绑定、政府联合监管审查（PGA）及全部税费代缴，买方零申报负担。",
                 ddp_card3_title: "门到门配送与自提灵活选择",
                 ddp_card3_desc: "支持卡车平板直接派送到您的修车厂或厂房，也可灵活选择在美东/美湾核心海外仓进行便捷的 Will Call 本地自提。",
-                channels_subtitle: "核心航线与海外仓网络",
-                channels_title: "世诺专属战略优势渠道",
+                channels_subtitle: "我们在这些重点产品上提供最快速的运输解决方案",
+                channels_title: "我们的专属清关渠道",
                 channels_desc: "依托成熟的港口快线配置与本土履约资产，实现货物的极速清关与放行。",
+                ch4_badge: "我们的核心优势（每月 500+ TEU）：",
                 ch1_title: "纽约 / 新泽西 三州枢纽",
-                ch1_desc: "直航纽约/新泽西港（Port of NY/NJ）。配备专属保税海外仓，支持快速 Will Call 自提与周边州短途配送。",
+                ch1_desc: "我们的卡车运输服务覆盖美国所有主要港口及大部分 IPI 内陆点。",
+                ch1_region: "美国东海岸",
                 ch1_li1: "履约模式：",
+                ch1_li1_desc: "Will Call 仓库自提与本地卡车派送",
                 ch1_li2: "覆盖范围：",
+                ch1_li2_desc: "纽约州、新泽西州、康涅狄格州、宾夕法尼亚州",
                 ch2_title: "休斯顿 美湾直达通道",
                 ch2_desc: "全水路（All-Water）直达休斯顿港。专为重柜、工业机械及美国南部商业车队备件量身打造。",
+                ch2_region: "美国墨西哥湾沿岸",
                 ch2_li1: "特色优势：",
+                ch2_li1_desc: "重型货物与许可拖车运输",
                 ch2_li2: "覆盖范围：",
+                ch2_li2_desc: "德州、俄克拉何马州、路易斯安那州及墨西哥湾地区",
                 ch3_title: "美西洛杉矶 (LA/LGB) 极速中转",
                 ch3_desc: "12-14 天直达洛杉矶/长滩港，配套专属海铁联运（MLB/IPI）直插美国内陆腹地各核心铁路堆场。",
+                ch3_region: "美国西海岸",
                 ch3_li1: "纯海运时效：",
+                ch3_li1_desc: "海运跨境 12-14 天",
                 ch3_li2: "陆桥转运：",
+                ch3_li2_desc: "IPI 直达美国中西部/西南部",
+                ch4_title: "高关税商品",
+                ch4_desc: "我们与多家报关行和订舱代理合作，为各类产品提供具有竞争力的价格。",
+                ch4_li1: "我们的定制策略：",
+                ch4_li1_desc: "整合出口清关、海运及本地化合规服务，为客户提供透明的到岸成本，免除买方的行政手续与关税负担。",
                 contact_subtitle: "业务垂询",
                 contact_title: "获取正式 DDP 报价单",
-                contact_desc: "请填写以下询盘信息，我们的关务与物流团队将在 24 小时内与您取得联系。",
+                contact_desc: "请填写以下询盘信息，我们的物流团队将在 24 个工作小时内与您取得联系。",
                 contact_hq: "总部地址：",
                 contact_tel: "联系电话：",
                 contact_email: "商务邮箱：",
@@ -520,6 +552,8 @@
                 heroContent.style.opacity = opacity;
                 heroContent.style.transform = `translateY(${scrollPosition * 0.25}px)`;
             }
+        });
+
         // 3. 手机端汉堡菜单滑动逻辑
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const closeMenuBtn = document.getElementById('close-menu-btn');
@@ -570,7 +604,6 @@
                 btnZhMobile.className = "px-2 py-1 rounded hover:text-blue-300 bg-transparent text-white";
             }
         }
-        });
     </script>
 </body>
 </html>
