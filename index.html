@@ -3,18 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shinuo Supply Chain | DDP Logistics Solutions</title>
-    <!-- 使用本地构建的 Tailwind CSS -->
-    <link rel="stylesheet" href="dist/tailwind.css">
+    
+    <!-- 1. SEO 标题与商业描述（提升谷歌搜索展示效果） -->
+    <title>Shinuo Supply Chain | Premium Trans-Pacific DDP Logistics</title>
+    <meta name="description" content="Factory-direct DDP shipping solutions for commercial TBR tires and heavy commodities. Local warehousing and direct routes with 100% compliant customs clearance.">
+    <meta name="keywords" content="DDP shipping, TBR tires, US freight forwarder, landed cost, NY NJ warehousing, Houston freight">
+
+    <!-- 方案 A（推荐）：如果你已经把 dist/tailwind.css 推送到了 GitHub 仓库，保留相对根路径引用： -->
+    <link rel="stylesheet" href="./dist/tailwind.css">
+
     <style>
-        /* 平滑滚动与视差背景 */
-        html { scroll-behavior: smooth; }
+        /* 平滑滚动 */
+        html { 
+            scroll-behavior: smooth; 
+        }
+        
+        /* 视差背景优化：添加纯色底兜底，防止图片加载延迟时首屏闪白 */
         .parallax-bg {
-            background-image: url('homepage-port.jpg');
+            background-color: #111827; /* 兜底深色底 */
+            background-image: url('./homepage-port.jpg');
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+        }
+
+        /* 移动端视差兼容补丁：部分手机浏览器（如 iOS Safari）对 fixed 背景有卡顿 Bug */
+        @media (max-width: 768px) {
+            .parallax-bg {
+                background-attachment: scroll;
+            }
         }
     </style>
 </head>
